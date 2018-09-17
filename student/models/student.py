@@ -22,3 +22,6 @@ class Student(models.Model):
     pay_8 = models.OneToOneField(Pay8, blank=True, null=True)
     pay_9 = models.OneToOneField(Pay9, blank=True, null=True)
     pay_10 = models.OneToOneField(Pay10, blank=True, null=True)
+
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
