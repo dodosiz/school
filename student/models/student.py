@@ -25,3 +25,28 @@ class Student(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+
+    @property
+    def sum_pay(self):
+        result = 0.0
+        if self.pay_1:
+            result += self.pay_1.pay
+        if self.pay_2:
+            result += self.pay_2.pay
+        if self.pay_3:
+            result += self.pay_3.pay
+        if self.pay_4:
+            result += self.pay_4.pay
+        if self.pay_5:
+            result += self.pay_5.pay
+        if self.pay_6:
+            result += self.pay_6.pay
+        if self.pay_7:
+            result += self.pay_7.pay
+        if self.pay_8:
+            result += self.pay_8.pay
+        if self.pay_9:
+            result += self.pay_9.pay
+        if self.pay_10:
+            result += self.pay_10.pay
+        return result
