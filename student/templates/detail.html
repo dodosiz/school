@@ -1,0 +1,308 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'custom/styles.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'jquery/jquery-ui.min.css' %}" />
+
+<div class="container-fluid margin-top-2">
+    <ul class="nav nav-tabs" id="tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'full_info' %}">Full Details</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'basic_info' %}">Basic Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'exam_info' %}">Exams Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'financial_info' %}">Financial Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Edit User</a>
+      </li>
+    </ul>
+    <form action="" method="post">
+        <!-- BASIC INFO -->
+        <h3 class="display-4">Basic Info</h3>
+        <hr>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.first_name.id_for_label }}">First Name: </label>
+                {{form.first_name}}
+            </div>
+            <div class="col">
+                <label for="{{form.last_name.id_for_label }}">Last Name: </label>
+                {{form.last_name}}
+            </div>
+            <div class="col">
+                <label for="{{form.fathers_name.id_for_label }}">Fathers Name: </label>
+                {{form.fathers_name}}
+            </div>
+            <div class="col">
+                <label for="{{form.mothers_name.id_for_label }}">Mothers Name: </label>
+                {{form.mothers_name}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.fathers_job.id_for_label }}">Fathers Job: </label>
+                {{form.fathers_job}}
+            </div>
+            <div class="col">
+                <label for="{{form.mothers_job.id_for_label }}">Mothers Job: </label>
+                {{form.mothers_job}}
+            </div>
+            <div class="col">
+                <label for="{{form.afm.id_for_label }}">A.F.M.: </label>
+                {{form.afm}}
+            </div>
+            <div class="col">
+                <label for="{{form.fees.id_for_label }}">Fees: </label>
+                {{form.fees}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.telephone_1.id_for_label }}">Telephone 1: </label>
+                {{form.telephone_1}}
+            </div>
+            <div class="col">
+                <label for="{{form.telephone_1.id_for_label }}">Telephone 2: </label>
+                {{form.telephone_1}}
+            </div>
+            <div class="col">
+                <label for="{{form.address.id_for_label }}">Address: </label>
+                {{form.address}}
+            </div>
+            <div class="col">
+            </div>
+        </div>
+
+        <!-- EXAM INFO -->
+        <h3 class="display-4 margin-top-2">Exam Info</h3>
+        <hr>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.dictionary_a.id_for_label }}">Dictionary A: </label>
+                {{form.dictionary_a}}
+            </div>
+            <div class="col">
+                <label for="{{form.speaking_a.id_for_label }}">Speaking A: </label>
+                {{form.speaking_a}}
+            </div>
+            <div class="col">
+                <label for="{{form.listening_a.id_for_label }}">Listening A: </label>
+                {{form.listening_a}}
+            </div>
+            <div class="col">
+                <label for="{{form.reading_a.id_for_label }}">Reading A: </label>
+                {{form.reading_a}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.writing_a.id_for_label }}">Writing A: </label>
+                {{form.writing_a}}
+            </div>
+            <div class="col">
+                <label for="{{form.grammar_a.id_for_label }}">Grammar A: </label>
+                {{form.grammar_a}}
+            </div>
+            <div class="col">
+                <label for="{{form.test_a.id_for_label }}">Test A: </label>
+                {{form.test_a}}
+            </div>
+            <div class="col">
+                <label for="{{form.exams_a.id_for_label }}">Exams A: </label>
+                {{form.exams_a}}
+            </div>
+        </div>
+        <div class="form-row margin-top-2">
+            <div class="col">
+                <label for="{{form.dictionary_b.id_for_label }}">Dictionary B: </label>
+                {{form.dictionary_b}}
+            </div>
+            <div class="col">
+                <label for="{{form.speaking_b.id_for_label }}">Speaking B: </label>
+                {{form.speaking_b}}
+            </div>
+            <div class="col">
+                <label for="{{form.listening_b.id_for_label }}">Listening B: </label>
+                {{form.listening_b}}
+            </div>
+            <div class="col">
+                <label for="{{form.reading_b.id_for_label }}">Reading B: </label>
+                {{form.reading_b}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.writing_b.id_for_label }}">Writing B: </label>
+                {{form.writing_b}}
+            </div>
+            <div class="col">
+                <label for="{{form.grammar_b.id_for_label }}">Grammar B: </label>
+                {{form.grammar_b}}
+            </div>
+            <div class="col">
+                <label for="{{form.test_b.id_for_label }}">Test B: </label>
+                {{form.test_b}}
+            </div>
+            <div class="col">
+                <label for="{{form.exams_b.id_for_label }}">Exams B: </label>
+                {{form.exams_b}}
+            </div>
+        </div>
+        <!-- FINANCIAL INFO -->
+        <h3 class="display-4 margin-top-2">Financial Info</h3>
+        <hr>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.pay_1.id_for_label }}">Pay 1: </label>
+                {{form.pay_1}}
+            </div>
+            <div class="col">
+                <label for="{{form.date_1.id_for_label }}">Date 1: </label>
+                {{form.date_1}}
+            </div>
+            <div class="col">
+                <label for="{{form.service_number_1.id_for_label }}">Service Number 1: </label>
+                {{form.service_number_1}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.pay_2.id_for_label }}">Pay 2: </label>
+                {{form.pay_2}}
+            </div>
+            <div class="col">
+                <label for="{{form.date_2.id_for_label }}">Date 2: </label>
+                {{form.date_2}}
+            </div>
+            <div class="col">
+                <label for="{{form.service_number_2.id_for_label }}">Service Number 2: </label>
+                {{form.service_number_2}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.pay_3.id_for_label }}">Pay 3: </label>
+                {{form.pay_3}}
+            </div>
+            <div class="col">
+                <label for="{{form.date_3.id_for_label }}">Date 3: </label>
+                {{form.date_3}}
+            </div>
+            <div class="col">
+                <label for="{{form.service_number_3.id_for_label }}">Service Number 3: </label>
+                {{form.service_number_3}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.pay_4.id_for_label }}">Pay 4: </label>
+                {{form.pay_4}}
+            </div>
+            <div class="col">
+                <label for="{{form.date_4.id_for_label }}">Date 4: </label>
+                {{form.date_4}}
+            </div>
+            <div class="col">
+                <label for="{{form.service_number_4.id_for_label }}">Service Number 4: </label>
+                {{form.service_number_4}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.pay_5.id_for_label }}">Pay 5: </label>
+                {{form.pay_5}}
+            </div>
+            <div class="col">
+                <label for="{{form.date_5.id_for_label }}">Date 5: </label>
+                {{form.date_5}}
+            </div>
+            <div class="col">
+                <label for="{{form.service_number_5.id_for_label }}">Service Number 5: </label>
+                {{form.service_number_5}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.pay_6.id_for_label }}">Pay 6: </label>
+                {{form.pay_6}}
+            </div>
+            <div class="col">
+                <label for="{{form.date_6.id_for_label }}">Date 6: </label>
+                {{form.date_6}}
+            </div>
+            <div class="col">
+                <label for="{{form.service_number_6.id_for_label }}">Service Number 6: </label>
+                {{form.service_number_6}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.pay_7.id_for_label }}">Pay 7: </label>
+                {{form.pay_7}}
+            </div>
+            <div class="col">
+                <label for="{{form.date_7.id_for_label }}">Date 7: </label>
+                {{form.date_7}}
+            </div>
+            <div class="col">
+                <label for="{{form.service_number_7.id_for_label }}">Service Number 7: </label>
+                {{form.service_number_7}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.pay_8.id_for_label }}">Pay 8: </label>
+                {{form.pay_8}}
+            </div>
+            <div class="col">
+                <label for="{{form.date_8.id_for_label }}">Date 8: </label>
+                {{form.date_8}}
+            </div>
+            <div class="col">
+                <label for="{{form.service_number_8.id_for_label }}">Service Number 8: </label>
+                {{form.service_number_8}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.pay_9.id_for_label }}">Pay 9: </label>
+                {{form.pay_9}}
+            </div>
+            <div class="col">
+                <label for="{{form.date_9.id_for_label }}">Date 9: </label>
+                {{form.date_9}}
+            </div>
+            <div class="col">
+                <label for="{{form.service_number_9.id_for_label }}">Service Number 9: </label>
+                {{form.service_number_9}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{form.pay_10.id_for_label }}">Pay 10: </label>
+                {{form.pay_10}}
+            </div>
+            <div class="col">
+                <label for="{{form.date_10.id_for_label }}">Date 10: </label>
+                {{form.date_10}}
+            </div>
+            <div class="col">
+                <label for="{{form.service_number_10.id_for_label }}">Service Number 10: </label>
+                {{form.service_number_10}}
+            </div>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary margin-top-2" />
+    </form>
+</div>
+
+<script src="{% static 'jquery/jquery.min.js' %}"></script>
+<script src="{% static 'jquery/jquery-ui.min.js' %}"></script>
+<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+<script>
+    $('.datepicker').datepicker();
+</script>

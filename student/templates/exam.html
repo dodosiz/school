@@ -1,0 +1,158 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'custom/styles.css' %}" />
+
+{% if students %}
+<div class="container-fluid margin-top-2">
+    <ul class="nav nav-tabs" id="tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'full_info' %}">Full Details</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'basic_info' %}">Basic Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'exam_info' %}">Exams Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'financial_info' %}">Financial Info</a>
+      </li>
+    </ul>
+    <div class="table-responsive" id="results">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <!-- EXAM A -->
+                    <th scope="col">Dictionary A</th>
+                    <th scope="col">Speaking A</th>
+                    <th scope="col">Listening A</th>
+                    <th scope="col">Reading A</th>
+                    <th scope="col">Writing A</th>
+                    <th scope="col">Grammar A</th>
+                    <th scope="col">Test A</th>
+                    <th scope="col">Exams A</th>
+                    <!-- EXAM B -->
+                    <th scope="col">Dictionary B</th>
+                    <th scope="col">Speaking B</th>
+                    <th scope="col">Listening B</th>
+                    <th scope="col">Reading B</th>
+                    <th scope="col">Writing B</th>
+                    <th scope="col">Grammar B</th>
+                    <th scope="col">Test B</th>
+                    <th scope="col">Exams B</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for student in students %}
+                <tr>
+                  <th scope="row">{{student.id}}</th>
+                  <td><a href="{% url 'detail' student.id %}">{{student.first_name}}</a></td>
+                  <td>{{student.last_name}}</td>
+                  <!-- DICTIONARY A -->
+                  {% if student.exam_a.dictionary %}
+                    <td>{{student.exam_a.dictionary}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SPEAKING A -->
+                  {% if student.exam_a.speaking %}
+                    <td>{{student.exam_a.speaking}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- LISTENING A -->
+                  {% if student.exam_a.listening %}
+                    <td>{{student.exam_a.listening}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- READING A -->
+                  {% if student.exam_a.reading %}
+                    <td>{{student.exam_a.reading}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- WRITING A -->
+                  {% if student.exam_a.writing %}
+                    <td>{{student.exam_a.writing}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- GRAMMAR A -->
+                  {% if student.exam_a.grammar %}
+                    <td>{{student.exam_a.grammar}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- TEST A -->
+                  {% if student.exam_a.test %}
+                    <td>{{student.exam_a.test}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- EXAMS A -->
+                  {% if student.exam_a.exams %}
+                    <td>{{student.exam_a.exams}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- DICTIONARY B -->
+                  {% if student.exam_b.dictionary %}
+                    <td>{{student.exam_b.dictionary}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SPEAKING B -->
+                  {% if student.exam_b.speaking %}
+                    <td>{{student.exam_b.speaking}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- LISTENING B -->
+                  {% if student.exam_b.listening %}
+                    <td>{{student.exam_b.listening}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- READING B -->
+                  {% if student.exam_b.reading %}
+                    <td>{{student.exam_b.reading}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- WRITING B -->
+                  {% if student.exam_b.writing %}
+                    <td>{{student.exam_b.writing}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- GRAMMAR B -->
+                  {% if student.exam_b.grammar %}
+                    <td>{{student.exam_b.grammar}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- TEST B -->
+                  {% if student.exam_b.test %}
+                    <td>{{student.exam_b.test}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- EXAMS B -->
+                  {% if student.exam_b.exams %}
+                    <td>{{student.exam_b.exams}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+
+<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>

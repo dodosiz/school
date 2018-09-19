@@ -1,0 +1,107 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'custom/styles.css' %}" />
+
+{% if students %}
+<div class="container-fluid margin-top-2">
+    <ul class="nav nav-tabs" id="tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'full_info' %}">Full Details</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'basic_info' %}">Basic Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'exam_info' %}">Exams Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'financial_info' %}">Financial Info</a>
+      </li>
+    </ul>
+    <div class="table-responsive" id="results">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Fathers Name</th>
+                    <th scope="col">Mothers Name</th>
+                    <th scope="col">Fathers Job</th>
+                    <th scope="col">Mothers Job</th>
+                    <th scope="col">A.F.M.</th>
+                    <th scope="col">Fees</th>
+                    <th scope="col">Telephone 1</th>
+                    <th scope="col">Telephone 2</th>
+                    <th scope="col">Address</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for student in students %}
+                <tr>
+                  <th scope="row">{{student.id}}</th>
+                  <td><a href="{% url 'detail' student.id %}">{{student.first_name}}</a></td>
+                  <td>{{student.last_name}}</td>
+                  <!-- FATHERS NAME -->
+                  {% if student.family.fathers_name %}
+                    <td>{{student.family.fathers_name}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- MOTHERS NAME -->
+                  {% if student.family.mothers_name %}
+                    <td>{{student.family.mothers_name}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- FATHERS JOB -->
+                  {% if student.family.fathers_job %}
+                    <td>{{student.family.fathers_job}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- MOTHERS JOB -->
+                  {% if student.family.mothers_job %}
+                    <td>{{student.family.mothers_job}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- AFM -->
+                  {% if student.financial.afm %}
+                    <td>{{student.financial.afm}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- FEES -->
+                  {% if student.financial.fees %}
+                    <td>{{student.financial.fees}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- TELEPHONE 1 -->
+                  {% if student.contact.telephone_1 %}
+                    <td>{{student.contact.telephone_1}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- TELEPHONE 2 -->
+                  {% if student.contact.telephone_2 %}
+                    <td>{{student.contact.telephone_2}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- ADDRESS -->
+                  {% if student.contact.address %}
+                    <td>{{student.contact.address}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+
+<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>

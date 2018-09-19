@@ -1,0 +1,444 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'custom/styles.css' %}" />
+
+{% if students %}
+<div class="container-fluid margin-top-2">
+    <ul class="nav nav-tabs" id="tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'full_info' %}">Full Details</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'basic_info' %}">Basic Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'exam_info' %}">Exams Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'financial_info' %}">Financial Info</a>
+      </li>
+    </ul>
+    <div class="table-responsive" id="results">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Fathers Name</th>
+                    <th scope="col">Mothers Name</th>
+                    <th scope="col">Fathers Job</th>
+                    <th scope="col">Mothers Job</th>
+                    <th scope="col">A.F.M.</th>
+                    <th scope="col">Fees</th>
+                    <th scope="col">Telephone 1</th>
+                    <th scope="col">Telephone 2</th>
+                    <th scope="col">Address</th>
+                    <!-- EXAM A -->
+                    <th scope="col">Dictionary A</th>
+                    <th scope="col">Speaking A</th>
+                    <th scope="col">Listening A</th>
+                    <th scope="col">Reading A</th>
+                    <th scope="col">Writing A</th>
+                    <th scope="col">Grammar A</th>
+                    <th scope="col">Test A</th>
+                    <th scope="col">Exams A</th>
+                    <!-- EXAM B -->
+                    <th scope="col">Dictionary B</th>
+                    <th scope="col">Speaking B</th>
+                    <th scope="col">Listening B</th>
+                    <th scope="col">Reading B</th>
+                    <th scope="col">Writing B</th>
+                    <th scope="col">Grammar B</th>
+                    <th scope="col">Test B</th>
+                    <th scope="col">Exams B</th>
+                    <!-- PAY 1 -->
+                    <th scope="col">Pay 1</th>
+                    <th scope="col">Date 1</th>
+                    <th scope="col">A.P.Y. 1</th>
+                    <!-- PAY 2 -->
+                    <th scope="col">Pay 2</th>
+                    <th scope="col">Date 2</th>
+                    <th scope="col">A.P.Y. 2</th>
+                    <!-- PAY 3 -->
+                    <th scope="col">Pay 3</th>
+                    <th scope="col">Date 3</th>
+                    <th scope="col">A.P.Y. 3</th>
+                    <!-- PAY 4 -->
+                    <th scope="col">Pay 4</th>
+                    <th scope="col">Date 4</th>
+                    <th scope="col">A.P.Y. 4</th>
+                    <!-- PAY 5 -->
+                    <th scope="col">Pay 5</th>
+                    <th scope="col">Date 5</th>
+                    <th scope="col">A.P.Y. 5</th>
+                    <!-- PAY 6 -->
+                    <th scope="col">Pay 6</th>
+                    <th scope="col">Date 6</th>
+                    <th scope="col">A.P.Y. 6</th>
+                    <!-- PAY 7 -->
+                    <th scope="col">Pay 7</th>
+                    <th scope="col">Date 7</th>
+                    <th scope="col">A.P.Y. 7</th>
+                    <!-- PAY 8 -->
+                    <th scope="col">Pay 8</th>
+                    <th scope="col">Date 8</th>
+                    <th scope="col">A.P.Y. 8</th>
+                    <!-- PAY 9 -->
+                    <th scope="col">Pay 9</th>
+                    <th scope="col">Date 9</th>
+                    <th scope="col">A.P.Y. 9</th>
+                    <!-- PAY 10 -->
+                    <th scope="col">Pay 10</th>
+                    <th scope="col">Date 10</th>
+                    <th scope="col">A.P.Y. 10</th>
+                    <!-- TOTAL -->
+                    <th scope="col">TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for student in students %}
+                <tr>
+                  <th scope="row">{{student.id}}</th>
+                  <td><a href="{% url 'detail' student.id %}">{{student.first_name}}</a></td>
+                  <td>{{student.last_name}}</td>
+                  <!-- FATHERS NAME -->
+                  {% if student.family.fathers_name %}
+                    <td>{{student.family.fathers_name}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- MOTHERS NAME -->
+                  {% if student.family.mothers_name %}
+                    <td>{{student.family.mothers_name}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- FATHERS JOB -->
+                  {% if student.family.fathers_job %}
+                    <td>{{student.family.fathers_job}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- MOTHERS JOB -->
+                  {% if student.family.mothers_job %}
+                    <td>{{student.family.mothers_job}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- AFM -->
+                  {% if student.financial.afm %}
+                    <td>{{student.financial.afm}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- FEES -->
+                  {% if student.financial.fees %}
+                    <td>{{student.financial.fees}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- TELEPHONE 1 -->
+                  {% if student.contact.telephone_1 %}
+                    <td>{{student.contact.telephone_1}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- TELEPHONE 2 -->
+                  {% if student.contact.telephone_2 %}
+                    <td>{{student.contact.telephone_2}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- ADDRESS -->
+                  {% if student.contact.address %}
+                    <td>{{student.contact.address}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- DICTIONARY A -->
+                  {% if student.exam_a.dictionary %}
+                    <td>{{student.exam_a.dictionary}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SPEAKING A -->
+                  {% if student.exam_a.speaking %}
+                    <td>{{student.exam_a.speaking}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- LISTENING A -->
+                  {% if student.exam_a.listening %}
+                    <td>{{student.exam_a.listening}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- READING A -->
+                  {% if student.exam_a.reading %}
+                    <td>{{student.exam_a.reading}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- WRITING A -->
+                  {% if student.exam_a.writing %}
+                    <td>{{student.exam_a.writing}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- GRAMMAR A -->
+                  {% if student.exam_a.grammar %}
+                    <td>{{student.exam_a.grammar}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- TEST A -->
+                  {% if student.exam_a.test %}
+                    <td>{{student.exam_a.test}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- EXAMS A -->
+                  {% if student.exam_a.exams %}
+                    <td>{{student.exam_a.exams}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- DICTIONARY B -->
+                  {% if student.exam_b.dictionary %}
+                    <td>{{student.exam_b.dictionary}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SPEAKING B -->
+                  {% if student.exam_b.speaking %}
+                    <td>{{student.exam_b.speaking}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- LISTENING B -->
+                  {% if student.exam_b.listening %}
+                    <td>{{student.exam_b.listening}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- READING B -->
+                  {% if student.exam_b.reading %}
+                    <td>{{student.exam_b.reading}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- WRITING B -->
+                  {% if student.exam_b.writing %}
+                    <td>{{student.exam_b.writing}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- GRAMMAR B -->
+                  {% if student.exam_b.grammar %}
+                    <td>{{student.exam_b.grammar}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- TEST B -->
+                  {% if student.exam_b.test %}
+                    <td>{{student.exam_b.test}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- EXAMS B -->
+                  {% if student.exam_b.exams %}
+                    <td>{{student.exam_b.exams}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- PAY 1  -->
+                  {% if student.pay_1.pay %}
+                    <td>{{student.pay_1.pay}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- DATE 1  -->
+                  {% if student.pay_1.date %}
+                    <td>{{student.pay_1.date}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SERVICE NUMBER 1 -->
+                  {% if student.pay_1.service_number %}
+                    <td>{{student.pay_1.service_number}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- PAY 2  -->
+                  {% if student.pay_2.pay %}
+                    <td>{{student.pay_2.pay}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- DATE 2  -->
+                  {% if student.pay_2.date %}
+                    <td>{{student.pay_2.date}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SERVICE NUMBER 2 -->
+                  {% if student.pay_2.service_number %}
+                    <td>{{student.pay_2.service_number}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- PAY 3  -->
+                  {% if student.pay_3.pay %}
+                    <td>{{student.pay_3.pay}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- DATE 3  -->
+                  {% if student.pay_3.date %}
+                    <td>{{student.pay_3.date}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SERVICE NUMBER 3 -->
+                  {% if student.pay_3.service_number %}
+                    <td>{{student.pay_3.service_number}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- PAY 4 -->
+                  {% if student.pay_4.pay %}
+                    <td>{{student.pay_4.pay}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- DATE 4 -->
+                  {% if student.pay_4.date %}
+                    <td>{{student.pay_4.date}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SERVICE NUMBER 4 -->
+                  {% if student.pay_4.service_number %}
+                    <td>{{student.pay_4.service_number}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- PAY 5  -->
+                  {% if student.pay_5.pay %}
+                    <td>{{student.pay_5.pay}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- DATE 5  -->
+                  {% if student.pay_5.date %}
+                    <td>{{student.pay_5.date}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SERVICE NUMBER 5 -->
+                  {% if student.pay_5.service_number %}
+                    <td>{{student.pay_5.service_number}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- PAY 6  -->
+                  {% if student.pay_6.pay %}
+                    <td>{{student.pay_6.pay}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- DATE 6  -->
+                  {% if student.pay_6.date %}
+                    <td>{{student.pay_6.date}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SERVICE NUMBER 6 -->
+                  {% if student.pay_6.service_number %}
+                    <td>{{student.pay_6.service_number}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- PAY 7  -->
+                  {% if student.pay_7.pay %}
+                    <td>{{student.pay_7.pay}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- DATE 7  -->
+                  {% if student.pay_7.date %}
+                    <td>{{student.pay_7.date}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SERVICE NUMBER 7 -->
+                  {% if student.pay_7.service_number %}
+                    <td>{{student.pay_7.service_number}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- PAY 8  -->
+                  {% if student.pay_8.pay %}
+                    <td>{{student.pay_8.pay}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- DATE 8  -->
+                  {% if student.pay_8.date %}
+                    <td>{{student.pay_8.date}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SERVICE NUMBER 8 -->
+                  {% if student.pay_8.service_number %}
+                    <td>{{student.pay_8.service_number}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- PAY 9 -->
+                  {% if student.pay_9.pay %}
+                    <td>{{student.pay_9.pay}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- DATE 9 -->
+                  {% if student.pay_9.date %}
+                    <td>{{student.pay_9.date}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SERVICE NUMBER 9 -->
+                  {% if student.pay_9.service_number %}
+                    <td>{{student.pay_9.service_number}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- PAY 10  -->
+                  {% if student.pay_10.pay %}
+                    <td>{{student.pay_10.pay}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- DATE 10 -->
+                  {% if student.pay_10.date %}
+                    <td>{{student.pay_10.date}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <!-- SERVICE NUMBER 10 -->
+                  {% if student.pay_10.service_number %}
+                    <td>{{student.pay_10.service_number}}</td>
+                  {% else %}
+                    <td>-</td>
+                  {% endif %}
+                  <td>{{student.sum_pay}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+
+<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
