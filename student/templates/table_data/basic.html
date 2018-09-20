@@ -1,0 +1,54 @@
+<!-- FATHERS NAME -->
+{% if student.family.fathers_name %}
+<td>{{student.family.fathers_name}}</td>
+{% else %}
+<td>-</td>
+{% endif %}
+<!-- MOTHERS NAME -->
+{% if student.family.mothers_name %}
+<td>{{student.family.mothers_name}}</td>
+{% else %}
+<td>-</td>
+{% endif %}
+<!-- FATHERS JOB -->
+{% if student.family.fathers_job %}
+<td>{{student.family.fathers_job}}</td>
+{% else %}
+<td>-</td>
+{% endif %}
+<!-- MOTHERS JOB -->
+{% if student.family.mothers_job %}
+<td>{{student.family.mothers_job}}</td>
+{% else %}
+<td>-</td>
+{% endif %}
+<!-- AFM -->
+{% if student.financial.afm %}
+<td>{{student.financial.afm}}</td>
+{% else %}
+<td>-</td>
+{% endif %}
+<!-- FEES -->
+{% if student.financial.fees %}
+<td>{{student.financial.fees}}</td>
+{% else %}
+<td>-</td>
+{% endif %}
+<!-- TELEPHONE 1 -->
+{% if student.contact.telephone_1 %}
+<td>{{student.contact.telephone_1}}</td>
+{% else %}
+<td>-</td>
+{% endif %}
+<!-- TELEPHONE 2 -->
+{% if student.contact.telephone_2 %}
+<td>{{student.contact.telephone_2}}</td>
+{% else %}
+<td>-</td>
+{% endif %}
+<!-- ADDRESS -->
+{% if student.contact.address %}
+<td>{{student.contact.address}}</td>
+{% else %}
+<td>-</td>
+{% endif %}

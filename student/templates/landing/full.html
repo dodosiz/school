@@ -1,0 +1,42 @@
+{% include 'wrapper/header.html' %}
+{% if students %}
+<div class="container-fluid margin-top-2">
+    <ul class="nav nav-tabs" id="tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="{% url 'full_info' %}">Full Details</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'basic_info' %}">Basic Info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'exam_info' %}">Exams Info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'financial_info' %}">Financial Info</a>
+        </li>
+    </ul>
+    <div class="table-responsive" id="results">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    {% include 'table_headers/student.html' %}
+                    {% include 'table_headers/basic.html' %}
+                    {% include 'table_headers/exams.html' %}
+                    {% include 'table_headers/financial.html' %}
+                </tr>
+            </thead>
+            <tbody>
+            {% for student in students %}
+                <tr>
+                    {% include 'table_data/student.html' %}
+                    {% include 'table_data/basic.html' %}
+                    {% include 'table_data/exams.html' %}
+                    {% include 'table_data/financial.html' %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+{% include 'wrapper/footer.html' %}

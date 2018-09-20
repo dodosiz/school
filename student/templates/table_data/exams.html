@@ -1,0 +1,61 @@
+{% load my_filters %}
+{% for exam in student.exams.all %}
+<!-- DICTIONARY A -->
+{% if exam.dictionary %}
+    <td>{{exam.dictionary}}</td>
+{% else %}
+    <td>-</td>
+{% endif %}
+<!-- SPEAKING A -->
+{% if student.exam.speaking %}
+    <td>{{exam.speaking}}</td>
+{% else %}
+    <td>-</td>
+{% endif %}
+<!-- LISTENING A -->
+{% if exam.listening %}
+    <td>{{exam.listening}}</td>
+{% else %}
+    <td>-</td>
+{% endif %}
+<!-- READING A -->
+{% if exam.reading %}
+    <td>{{exam.reading}}</td>
+{% else %}
+    <td>-</td>
+{% endif %}
+<!-- WRITING A -->
+{% if exam.writing %}
+    <td>{{exam.writing}}</td>
+{% else %}
+    <td>-</td>
+{% endif %}
+<!-- GRAMMAR A -->
+{% if exam.grammar %}
+    <td>{{exam.grammar}}</td>
+{% else %}
+    <td>-</td>
+{% endif %}
+<!-- TEST A -->
+{% if exam.test %}
+    <td>{{exam.test}}</td>
+{% else %}
+    <td>-</td>
+{% endif %}
+<!-- EXAMS A -->
+{% if exam.exams %}
+    <td>{{exam.exams}}</td>
+{% else %}
+    <td>-</td>
+{% endif %}
+{% endfor %}
+{% for i in student.exams.count|times:2 %}
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+{% endfor %}

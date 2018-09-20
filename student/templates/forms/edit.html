@@ -1,0 +1,141 @@
+{% include 'wrapper/header.html' %}
+<div class="container-fluid margin-top-2">
+    <ul class="nav nav-tabs" id="tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'full_info' %}">Full Details</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'basic_info' %}">Basic Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'exam_info' %}">Exams Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'financial_info' %}">Financial Info</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Edit User</a>
+      </li>
+    </ul>
+    <form action="" method="post">
+        {% csrf_token %}
+        <!-- BASIC INFO -->
+        <h3 class="display-4">Basic Info</h3>
+        <hr>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{basic_form.first_name.id_for_label }}">First Name: </label>
+                {{basic_form.first_name}}
+            </div>
+            <div class="col">
+                <label for="{{basic_form.last_name.id_for_label }}">Last Name: </label>
+                {{basic_form.last_name}}
+            </div>
+            <div class="col">
+                <label for="{{basic_form.fathers_name.id_for_label }}">Fathers Name: </label>
+                {{basic_form.fathers_name}}
+            </div>
+            <div class="col">
+                <label for="{{basic_form.mothers_name.id_for_label }}">Mothers Name: </label>
+                {{basic_form.mothers_name}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{basic_form.fathers_job.id_for_label }}">Fathers Job: </label>
+                {{basic_form.fathers_job}}
+            </div>
+            <div class="col">
+                <label for="{{basic_form.mothers_job.id_for_label }}">Mothers Job: </label>
+                {{basic_form.mothers_job}}
+            </div>
+            <div class="col">
+                <label for="{{basic_form.afm.id_for_label }}">A.F.M.: </label>
+                {{basic_form.afm}}
+            </div>
+            <div class="col">
+                <label for="{{basic_form.fees.id_for_label }}">Fees: </label>
+                {{basic_form.fees}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{basic_form.telephone_1.id_for_label }}">Telephone 1: </label>
+                {{basic_form.telephone_1}}
+            </div>
+            <div class="col">
+                <label for="{{basic_form.telephone_1.id_for_label }}">Telephone 2: </label>
+                {{basic_form.telephone_1}}
+            </div>
+            <div class="col">
+                <label for="{{basic_form.address.id_for_label }}">Address: </label>
+                {{basic_form.address}}
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <!-- EXAM INFO -->
+        <h3 class="display-4 margin-top-2">Exam Info</h3>
+        <hr>
+        {% for exam_form in exam_forms %}
+        <div class="form-row margin-top-2">
+            <div class="col">
+                <label for="{{exam_form.dictionary.id_for_label }}">Dictionary {{exam_form.form_number}}: </label>
+                {{exam_form.dictionary}}
+            </div>
+            <div class="col">
+                <label for="{{exam_form.speaking.id_for_label }}">Speaking {{exam_form.form_number}}: </label>
+                {{exam_form.speaking}}
+            </div>
+            <div class="col">
+                <label for="{{exam_form.listening.id_for_label }}">Listening {{exam_form.form_number}}: </label>
+                {{exam_form.listening}}
+            </div>
+            <div class="col">
+                <label for="{{exam_form.reading.id_for_label }}">Reading {{exam_form.form_number}}: </label>
+                {{exam_form.reading}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="{{exam_form.writing.id_for_label }}">Writing {{exam_form.form_number}}: </label>
+                {{exam_form.writing}}
+            </div>
+            <div class="col">
+                <label for="{{exam_form.grammar.id_for_label }}">Grammar {{exam_form.form_number}}: </label>
+                {{exam_form.grammar}}
+            </div>
+            <div class="col">
+                <label for="{{exam_form.test.id_for_label }}">Test {{exam_form.form_number}}: </label>
+                {{exam_form.test}}
+            </div>
+            <div class="col">
+                <label for="{{exam_form.exams.id_for_label }}">Exams {{exam_form.form_number}}: </label>
+                {{exam_form.exams}}
+            </div>
+        </div>
+        {% endfor %}
+        <!-- FINANCIAL INFO -->
+        <h3 class="display-4 margin-top-2">Financial Info</h3>
+        <hr>
+        {% for pay_form in pay_forms %}
+        <div class="form-row">
+            <div class="col">
+                <label for="{{pay_form.pay.id_for_label }}">Pay {{pay_form.form_number}}: </label>
+                {{pay_form.pay}}
+            </div>
+            <div class="col">
+                <label for="{{pay_form.date.id_for_label }}">Date {{pay_form.form_number}}: </label>
+                {{pay_form.date}}
+            </div>
+            <div class="col">
+                <label for="{{pay_form.service_number.id_for_label }}">Service Number {{pay_form.form_number}}: </label>
+                {{pay_form.service_number}}
+            </div>
+        </div>
+        {% endfor %}
+        <input type="submit" value="Update" class="btn btn-primary margin-top-2" />
+        <a href="{% url 'full_info' %}" class="btn btn-primary margin-top-2">Cancel</a>
+    </form>
+</div>
+{% include 'wrapper/footer.html' %}

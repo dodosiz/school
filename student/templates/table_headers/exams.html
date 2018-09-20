@@ -1,0 +1,11 @@
+{% load my_filters %}
+{% for c in value|AB %}
+    <th scope="col">Dictionary {{c}}</th>
+    <th scope="col">Speaking {{c}}</th>
+    <th scope="col">Listening {{c}}</th>
+    <th scope="col">Reading {{c}}</th>
+    <th scope="col">Writing {{c}}</th>
+    <th scope="col">Grammar {{c}}</th>
+    <th scope="col">Test {{c}}</th>
+    <th scope="col">Exams {{c}}</th>
+{% endfor %}

@@ -1,0 +1,24 @@
+{% load my_filters %}
+<!-- PAY -->
+{% for pay in student.pays.all %}
+{% if pay.pay %}
+  <td>{{pay.pay}}</td>
+{% else %}
+  <td>-</td>
+{% endif %}
+{% if pay.date %}
+  <td>{{pay.date|date:'d M y'}}</td>
+{% else %}
+  <td>-</td>
+{% endif %}
+{% if pay.service_number %}
+  <td>{{pay.service_number}}</td>
+{% else %}
+  <td>-</td>
+{% endif %}
+{% endfor %}
+{% for i in student.pays.count|times:10 %}
+<td>-</td>
+<td>-</td>
+<td>-</td>
+{% endfor %}

@@ -7,5 +7,6 @@ urlpatterns = [
     url('^basic_info/', views.basic_info, name='basic_info'),
     url('^exam_info/', views.exam_info, name='exam_info'),
     url('^financial_info', views.financial_info, name='financial_info'),
-    url('^detail/(?P<student_id>[0-9]+)/', views.detail, name='detail')
+    url('^edit/(?P<student_id>[0-9]+)/', views.edit, name='edit')
 ]
+
