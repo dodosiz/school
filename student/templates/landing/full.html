@@ -1,5 +1,4 @@
 {% include 'wrapper/header.html' %}
-{% if students %}
 <div class="container-fluid margin-top-2">
     <ul class="nav nav-tabs" id="tabs">
         <li class="nav-item">
@@ -15,7 +14,9 @@
             <a class="nav-link" href="{% url 'financial_info' %}">Financial Info</a>
         </li>
     </ul>
-    <div class="table-responsive" id="results">
+    <a href="{% url 'new' %}" class="btn btn-primary margin-top-1">Add New</a>
+    {% if students %}
+    <div class="table-responsive margin-top-1" id="results">
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -37,6 +38,8 @@
             </tbody>
         </table>
     </div>
+    {% else %}
+    <p>No students found.</p>
+    {% endif %}
 </div>
-{% endif %}
 {% include 'wrapper/footer.html' %}
