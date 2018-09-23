@@ -64,8 +64,8 @@
                 {{basic_form.telephone_1}}
             </div>
             <div class="col">
-                <label for="{{basic_form.telephone_1.id_for_label }}">Telephone 2: </label>
-                {{basic_form.telephone_1}}
+                <label for="{{basic_form.telephone_2.id_for_label }}">Telephone 2: </label>
+                {{basic_form.telephone_2}}
             </div>
             <div class="col">
                 <label for="{{basic_form.address.id_for_label }}">Address: </label>
@@ -79,39 +79,70 @@
         <hr>
         {% for exam_form in exam_forms %}
         <div class="form-row margin-top-2">
-            <div class="col">
-                <label for="{{exam_form.dictionary.id_for_label }}">Dictionary {{exam_form.form_number}}: </label>
-                {{exam_form.dictionary}}
+            <div class="col hidden">
+                <label for="exam_id_{{ exam_form.form_number }}">id {{exam_form.form_number}}: </label>
+                <input type="text" class="form-control"
+                   name="exam_id_{{ exam_form.form_number }}"
+                   id="exam_id_{{ exam_form.form_number }}"
+                   {% if exam_form.element_id.value != None %}value="{{ exam_form.element_id.value }}"{% endif %}>
             </div>
             <div class="col">
-                <label for="{{exam_form.speaking.id_for_label }}">Speaking {{exam_form.form_number}}: </label>
-                {{exam_form.speaking}}
+                <label for="dictionary_{{ exam_form.form_number }}">Dictionary {{exam_form.form_number}}: </label>
+                <input type="text" class="form-control"
+                   name="dictionary_{{ exam_form.form_number }}"
+                   id="dictionary_{{ exam_form.form_number }}"
+                   {% if exam_form.dictionary.value != None %}value="{{ exam_form.dictionary.value }}"{% endif %}>
             </div>
             <div class="col">
-                <label for="{{exam_form.listening.id_for_label }}">Listening {{exam_form.form_number}}: </label>
-                {{exam_form.listening}}
+                <label for="speaking_{{ exam_form.form_number }}">Speaking {{exam_form.form_number}}: </label>
+                <input type="text" class="form-control"
+                   name="speaking_{{ exam_form.form_number }}"
+                   id="speaking_{{ exam_form.form_number }}"
+                   {% if exam_form.speaking.value != None %}value="{{ exam_form.speaking.value }}"{% endif %}>
             </div>
             <div class="col">
-                <label for="{{exam_form.reading.id_for_label }}">Reading {{exam_form.form_number}}: </label>
-                {{exam_form.reading}}
+                <label for="listening_{{ exam_form.form_number }}">Listening {{exam_form.form_number}}: </label>
+                <input type="text" class="form-control"
+                   name="listening_{{ exam_form.form_number }}"
+                   id="listening_{{ exam_form.form_number }}"
+                   {% if exam_form.listening.value != None %}value="{{ exam_form.listening.value }}"{% endif %}>
+            </div>
+            <div class="col">
+                <label for="reading_{{ exam_form.form_number }}">Reading {{exam_form.form_number}}: </label>
+                <input type="text" class="form-control"
+                   name="reading_{{ exam_form.form_number }}"
+                   id="reading_{{ exam_form.form_number }}"
+                   {% if exam_form.reading.value != None %}value="{{ exam_form.reading.value }}"{% endif %}>
             </div>
         </div>
         <div class="form-row">
             <div class="col">
-                <label for="{{exam_form.writing.id_for_label }}">Writing {{exam_form.form_number}}: </label>
-                {{exam_form.writing}}
+                <label for="writing_{{ exam_form.form_number }}">Writing {{exam_form.form_number}}: </label>
+                <input type="text" class="form-control"
+                   name="writing_{{ exam_form.form_number }}"
+                   id="writing_{{ exam_form.form_number }}"
+                   {% if exam_form.writing.value != None %}value="{{ exam_form.writing.value }}"{% endif %}>
             </div>
             <div class="col">
-                <label for="{{exam_form.grammar.id_for_label }}">Grammar {{exam_form.form_number}}: </label>
-                {{exam_form.grammar}}
+                <label for="grammar_{{ exam_form.form_number }}">Grammar {{exam_form.form_number}}: </label>
+                <input type="text" class="form-control"
+                   name="grammar_{{ exam_form.form_number }}"
+                   id="grammar_{{ exam_form.form_number }}"
+                   {% if exam_form.grammar.value != None %}value="{{ exam_form.grammar.value }}"{% endif %}>
             </div>
             <div class="col">
-                <label for="{{exam_form.test.id_for_label }}">Test {{exam_form.form_number}}: </label>
-                {{exam_form.test}}
+                <label for="test_{{ exam_form.form_number }}">Test {{exam_form.form_number}}: </label>
+                <input type="text" class="form-control"
+                   name="test_{{ exam_form.form_number }}"
+                   id="test_{{ exam_form.form_number }}"
+                   {% if exam_form.test.value != None %}value="{{ exam_form.test.value }}"{% endif %}>
             </div>
             <div class="col">
-                <label for="{{exam_form.exams.id_for_label }}">Exams {{exam_form.form_number}}: </label>
-                {{exam_form.exams}}
+                <label for="exams_{{ exam_form.form_number }}">Exams {{exam_form.form_number}}: </label>
+                <input type="text" class="form-control"
+                   name="exams_{{ exam_form.form_number }}"
+                   id="exams_{{ exam_form.form_number }}"
+                   {% if exam_form.exams.value != None %}value="{{ exam_form.exams.value }}"{% endif %}>
             </div>
         </div>
         {% endfor %}
@@ -120,17 +151,33 @@
         <hr>
         {% for pay_form in pay_forms %}
         <div class="form-row">
-            <div class="col">
-                <label for="{{pay_form.pay.id_for_label }}">Pay {{pay_form.form_number}}: </label>
-                {{pay_form.pay}}
+            <div class="col hidden">
+                <label for="pay_id_{{ pay_form.form_number }}">id {{pay_form.form_number}}: </label>
+                <input type="text" class="form-control"
+                   name="pay_id_{{ pay_form.form_number }}"
+                   id="pay_id_{{ pay_form.form_number }}"
+                   {% if pay_form.element_id.value != None %}value="{{ pay_form.element_id.value }}"{% endif %}>
             </div>
             <div class="col">
-                <label for="{{pay_form.date.id_for_label }}">Date {{pay_form.form_number}}: </label>
-                {{pay_form.date}}
+                <label for="pay_{{ pay_form.form_number }}">Pay {{pay_form.form_number}}: </label>
+                <input type="text" class="form-control"
+                   name="pay_{{ pay_form.form_number }}"
+                   id="pay_{{ pay_form.form_number }}"
+                   {% if pay_form.pay.value != None %}value="{{ pay_form.pay.value }}"{% endif %}>
             </div>
             <div class="col">
-                <label for="{{pay_form.service_number.id_for_label }}">Service Number {{pay_form.form_number}}: </label>
-                {{pay_form.service_number}}
+                <label for="date_{{ pay_form.form_number }}">Date {{pay_form.form_number}}: </label>
+                <input type="text" class="form-control datepicker"
+                   name="date_{{ pay_form.form_number }}"
+                   id="date_{{ pay_form.form_number }}"
+                   {% if pay_form.date.value != None %}value="{{ pay_form.date.value|date:'Y-m-d' }}"{% endif %}>
+            </div>
+            <div class="col">
+                <label for="service_number_{{ pay_form.form_number }}">Service Number {{pay_form.form_number}}: </label>
+                <input type="text" class="form-control"
+                   name="service_number_{{ pay_form.form_number }}"
+                   id="service_number_{{ pay_form.form_number }}"
+                   {% if pay_form.service_number.value != None %}value="{{ pay_form.service_number.value }}"{% endif %}>
             </div>
         </div>
         {% endfor %}

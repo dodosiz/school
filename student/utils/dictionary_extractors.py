@@ -17,6 +17,7 @@ def basic_form(student):
 
 def exam_form(exam):
     exam_form_context = dict()
+    exam_form_context['element_id'] = exam.pk
     exam_form_context['dictionary'] = exam.dictionary
     exam_form_context['speaking'] = exam.speaking
     exam_form_context['listening'] = exam.listening
@@ -31,6 +32,7 @@ def exam_form(exam):
 
 def pay_form(pay):
     pay_form_context = dict()
+    pay_form_context['element_id'] = pay.pk
     pay_form_context['pay'] = pay.pay
     pay_form_context['date'] = pay.date
     pay_form_context['service_number'] = pay.service_number

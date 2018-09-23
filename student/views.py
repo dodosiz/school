@@ -1,6 +1,6 @@
 from .utils import dictionary_extractors
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models.student import Student
 from .models.exams import Exam
@@ -36,9 +36,85 @@ def financial_info(request):
 def edit(request, student_id):
     student = Student.objects.get(id=student_id)
     if request.method == 'POST':
-        basic_form = BasicForm(request.POST)
-        if basic_form.is_valid():
-            return HttpResponse(request.POST['first_name'])
+        # update student
+        student.first_name = request.POST['first_name']
+        student.last_name = request.POST['last_name']
+        student.save()
+        # update family
+        family = student.family
+        family.fathers_name = request.POST['fathers_name']
+        family.mothers_name = request.POST['mothers_name']
+        family.fathers_job = request.POST['fathers_job']
+        family.mothers_job = request.POST['mothers_job']
+        family.save()
+        # update financial info
+        financial = student.financial
+        financial.afm = request.POST['afm']
+        financial.fees = request.POST['fees']
+        financial.save()
+        # update contact info
+        contact = student.contact
+        contact.telephone_1 = request.POST['telephone_1']
+        contact.telephone_2 = request.POST['telephone_2']
+        contact.address = request.POST['address']
+        contact.save()
+        # update exams
+        for c in ['A', 'B']:
+            # update exam
+            if request.POST['exam_id_'+c]:
+                exam = Exam.objects.get(id=request.POST['exam_id_'+c])
+                exam.dictionary = request.POST['dictionary_'+c]
+                exam.speaking = request.POST['speaking_' + c]
+                exam.listening = request.POST['listening_' + c]
+                exam.reading = request.POST['reading_' + c]
+                exam.writing = request.POST['writing_' + c]
+                exam.grammar = request.POST['grammar_' + c]
+                exam.test = request.POST['test_' + c]
+                exam.exams = request.POST['exams_' + c]
+                exam.save()
+            # create new
+            elif request.POST['dictionary_'+c] or request.POST['speaking_' + c] or request.POST['listening_' + c]\
+                    or request.POST['reading_' + c] or request.POST['writing_' + c] or request.POST['grammar_' + c]\
+                    or request.POST['test_' + c] or request.POST['exams_' + c]:
+                exam = Exam()
+                exam.dictionary = request.POST['dictionary_' + c]
+                exam.speaking = request.POST['speaking_' + c]
+                exam.listening = request.POST['listening_' + c]
+                exam.reading = request.POST['reading_' + c]
+                exam.writing = request.POST['writing_' + c]
+                exam.grammar = request.POST['grammar_' + c]
+                exam.test = request.POST['test_' + c]
+                exam.exams = request.POST['exams_' + c]
+                exam.student = student
+                exam.save()
+        for i in range(1, 11):
+            # update pay
+            if request.POST['pay_id_'+str(i)]:
+                pay = Pay.objects.get(id=request.POST['pay_id_'+str(i)])
+                if request.POST['pay_' + str(i)]:
+                    pay.pay = float(request.POST['pay_'+str(i)])
+                else:
+                    pay.pay = 0.0
+                if request.POST['date_' + str(i)]:
+                    pay.date = request.POST['date_' + str(i)]
+                if request.POST['service_number_' + str(i)]:
+                    pay.service_number = int(request.POST['service_number_' + str(i)])
+                else:
+                    pay.service_number = 0
+                pay.save()
+            # create new
+            elif request.POST['pay_' + str(i)] or request.POST['date_' + str(i)]\
+                    or request.POST['service_number_' + str(i)]:
+                pay = Pay()
+                if request.POST['pay_'+str(i)]:
+                    pay.pay = float(request.POST['pay_' + str(i)])
+                if request.POST['date_' + str(i)]:
+                    pay.date = request.POST['date_' + str(i)]
+                if request.POST['service_number_' + str(i)]:
+                    pay.service_number = int(request.POST['service_number_' + str(i)])
+                pay.student = student
+                pay.save()
+        return redirect('full_info')
     else:
         # prepare the basic form
         basic_form_context = dictionary_extractors.basic_form(student)

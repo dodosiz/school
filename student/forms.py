@@ -23,20 +23,22 @@ class BasicForm(forms.Form):
 
 class ExamForm(forms.Form):
     form_number = ''
+    element_id = forms.IntegerField(required=False)
     dictionary = forms.CharField(max_length=50, required=False,
-                                   widget=forms.TextInput(attrs={'class': 'form-control'}))
-    speaking = forms.CharField(max_length=50, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+                                   widget=forms.TextInput())
+    speaking = forms.CharField(max_length=50, required=False, widget=forms.TextInput())
     listening = forms.CharField(max_length=50, required=False,
-                                  widget=forms.TextInput(attrs={'class': 'form-control'}))
-    reading = forms.CharField(max_length=50, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    writing = forms.CharField(max_length=50, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    grammar = forms.CharField(max_length=50, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    test = forms.CharField(max_length=50, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    exams = forms.CharField(max_length=50, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+                                  widget=forms.TextInput())
+    reading = forms.CharField(max_length=50, required=False, widget=forms.TextInput())
+    writing = forms.CharField(max_length=50, required=False, widget=forms.TextInput())
+    grammar = forms.CharField(max_length=50, required=False, widget=forms.TextInput())
+    test = forms.CharField(max_length=50, required=False, widget=forms.TextInput())
+    exams = forms.CharField(max_length=50, required=False, widget=forms.TextInput())
 
 
 class PayForm(forms.Form):
     form_number = 0
-    pay = forms.FloatField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    date = forms.DateField(required=False, widget=forms.TextInput(attrs={'class': 'form-control datepicker'}))
-    service_number = forms.IntegerField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    element_id = forms.IntegerField(required=False)
+    pay = forms.FloatField(required=False)
+    date = forms.DateField(required=False)
+    service_number = forms.IntegerField(required=False)
