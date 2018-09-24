@@ -48,8 +48,10 @@
 {% else %}
     <td>-</td>
 {% endif %}
+<td>{{exam.average}}</td>
 {% endfor %}
 {% for i in student.exams.count|times:2 %}
+<td>-</td>
 <td>-</td>
 <td>-</td>
 <td>-</td>

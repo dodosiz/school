@@ -11,3 +11,17 @@ class Student(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+
+    def total_paid(self):
+        pays = self.pays.all()
+        result = 0.0
+        for pay in pays:
+            if pay.pay:
+                result += pay.pay
+        return result
+
+    def total_to_pay(self):
+        result = 0.0
+        if self.financial.fees:
+            result = self.financial.fees - self.total_paid()
+        return result
