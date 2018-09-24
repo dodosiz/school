@@ -14,7 +14,13 @@
         <a class="nav-link" href="{% url 'financial_info' %}">Financial Info</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#">{{menu_message}}</a>
+        <a class="nav-link active" href="#">
+            {% ifequal mode 'edit' %}
+                Edit User
+            {% else %}
+                New User
+            {% endifequal %}
+        </a>
       </li>
     </ul>
     <form action="" method="post">
@@ -181,8 +187,37 @@
             </div>
         </div>
         {% endfor %}
+        {% ifequal mode 'edit' %}
         <input type="submit" value="Update" class="btn btn-primary margin-top-2" />
+        {% else %}
+        <input type="submit" value="Create" class="btn btn-primary margin-top-2" />
+        {% endifequal %}
+        {% ifequal mode 'edit' %}
+        <a href="#" class="btn btn-danger margin-top-2" data-toggle="modal" data-target="#alertModal">Delete</a>
+        {% endifequal %}
         <a href="{% url 'full_info' %}" class="btn btn-primary margin-top-2">Cancel</a>
     </form>
 </div>
+{% if student_id %}
+<!-- Modal -->
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="alertModalLabel">Delete Entry</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you wish to delete the entry?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="{% url 'delete' student_id %}" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
 {% include 'wrapper/footer.html' %}

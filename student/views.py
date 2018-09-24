@@ -163,7 +163,7 @@ def edit(request, student_id):
                 form_number += 1
 
     return render(request, 'forms/edit.html', {'basic_form': basic_form, 'exam_forms': exam_forms,
-                                               'pay_forms': pay_forms, 'menu_message': 'Edit User'})
+                                               'pay_forms': pay_forms, 'mode': 'edit', 'student_id': student.id})
 
 
 def new(request):
@@ -248,4 +248,10 @@ def new(request):
             form_number += 1
 
     return render(request, 'forms/edit.html', {'basic_form': basic_form, 'exam_forms': exam_forms,
-                                               'pay_forms': pay_forms, 'menu_message': 'New User'})
+                                               'pay_forms': pay_forms, 'mode': 'new'})
+
+
+def delete(request, student_id):
+    student = Student.objects.get(id=student_id)
+    student.delete()
+    return full_info(request, 'Entry deleted successfully')
